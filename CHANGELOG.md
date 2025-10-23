@@ -5,6 +5,26 @@ All notable changes to rfb-encodings will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2025-10-23
+
+### Fixed
+
+- **macOS CI Build**: Fixed turbojpeg linking errors on macOS in GitHub Actions
+  - Added environment variables for library paths in CI workflow
+  - Created `build.rs` to automatically configure linker search paths for all platforms
+  - macOS: Checks both Apple Silicon (`/opt/homebrew`) and Intel (`/usr/local`) Homebrew paths
+  - Windows: Configures vcpkg library paths
+  - Linux: Uses standard system library locations
+
+- **Compiler Warnings**: Suppressed unused variable warnings for conditional compilation
+  - Fixed `unused_variables` warning for `quality` parameter (only used with turbojpeg/debug-logging features)
+  - Fixed `unused_variables` warnings for error variables (only used with debug-logging feature)
+  - Added `#[allow(unused_variables)]` attributes for feature-gated code
+
+### Changed
+
+- Improved cross-platform build reliability for turbojpeg feature
+
 ## [0.1.0] - 2025-10-23
 
 ### Added
