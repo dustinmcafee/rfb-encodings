@@ -80,6 +80,7 @@ fn encode_tightpng_png(data: &[u8], width: u16, height: u16, compression: u8) ->
 
         let mut writer = match encoder.write_header() {
             Ok(w) => w,
+            #[allow(unused_variables)]
             Err(e) => {
                 #[cfg(feature = "debug-logging")]
                 log::error!("PNG header write failed: {e}, falling back to basic encoding");
@@ -96,6 +97,7 @@ fn encode_tightpng_png(data: &[u8], width: u16, height: u16, compression: u8) ->
             }
         };
 
+        #[allow(unused_variables)]
         if let Err(e) = writer.write_image_data(&rgb_data) {
             #[cfg(feature = "debug-logging")]
             log::error!("PNG data write failed: {e}, falling back to basic encoding");

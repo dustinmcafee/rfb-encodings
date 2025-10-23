@@ -1245,7 +1245,7 @@ fn encode_jpeg_rect<C: TightStreamCompressor>(
     pixels: &[u8],
     width: u16,
     height: u16,
-    quality: u8,
+    #[allow(unused_variables)] quality: u8,
     compressor: &mut C,
 ) -> BytesMut {
     #[cfg(feature = "turbojpeg")]
