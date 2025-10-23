@@ -5,6 +5,18 @@ All notable changes to rfb-encodings will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2025-10-23
+
+### Fixed
+
+- **Critical Build Failure**: Fixed compilation errors when using `turbojpeg` feature without `debug-logging`
+  - Root cause: Unguarded `log::info!` calls in tight.rs lines 1268 and 1273
+  - Error: "failed to resolve: use of unresolved module or unlinked crate `log`"
+  - Affected code: TurboJPEG error handling fallback paths
+  - **Solution**: Added `#[cfg(feature = "debug-logging")]` guards to log statements
+  - Added `#[allow(unused_variables)]` for error variables used only in logging
+  - This was a regression in v0.1.2 that broke builds without `debug-logging` feature
+
 ## [0.1.2] - 2025-10-23
 
 ### Changed

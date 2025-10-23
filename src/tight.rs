@@ -1264,12 +1264,16 @@ fn encode_jpeg_rect<C: TightStreamCompressor>(
         let jpeg_data = match TurboJpegEncoder::new() {
             Ok(mut encoder) => match encoder.compress_rgb(&rgb_data, width, height, quality) {
                 Ok(data) => data,
+                #[allow(unused_variables)]
                 Err(e) => {
+                    #[cfg(feature = "debug-logging")]
                     log::info!("TurboJPEG failed: {e}, using full-color");
                     return encode_full_color_rect(pixels, width, height, 6, compressor);
                 }
             },
+            #[allow(unused_variables)]
             Err(e) => {
+                #[cfg(feature = "debug-logging")]
                 log::info!("TurboJPEG init failed: {e}, using full-color");
                 return encode_full_color_rect(pixels, width, height, 6, compressor);
             }
