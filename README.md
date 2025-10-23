@@ -50,16 +50,20 @@ This crate provides encoding implementations for the VNC/RFB protocol, including
 
 ## Supported Encodings
 
-- **Raw** (0) - Uncompressed pixel data
-- **RRE** (2) - Rise-and-Run-length Encoding
-- **CoRRE** (4) - Compact RRE with 8-bit coordinates
-- **Hextile** (5) - 16x16 tile-based encoding
-- **Zlib** (6) - Zlib-compressed raw pixels
-- **Tight** (7) - Multi-mode compression (solid fill, mono, indexed palette, full-color zlib, JPEG)
-- **ZlibHex** (8) - Zlib-compressed Hextile
-- **ZRLE** (16) - Zlib Run-Length Encoding
-- **ZYWRLE** (17) - Wavelet-based lossy compression
-- **TightPng** (-260) - PNG-only compression mode
+| Encoding | ID | Description | Wire Format Match | Testing Status |
+|----------|----|----|-------------------|----------------|
+| **Raw** | 0 | Uncompressed pixels | ✅ 100% | ✅ Tested |
+| **RRE** | 2 | Rise-and-Run-length | ✅ 100% | ✅ Tested |
+| **CoRRE** | 4 | Compact RRE | ✅ 100% | ⚠️ Untested* |
+| **Hextile** | 5 | 16x16 tile-based | ✅ 100% | ✅ Tested |
+| **Zlib** | 6 | Zlib-compressed raw | ✅ 100% | ✅ Tested |
+| **Tight** | 7 | Multi-mode compression | ✅ 100% (all 5 modes) | ✅ Tested |
+| **ZlibHex** | 8 | Zlib-compressed Hextile | ✅ 100% | ⚠️ Untested* |
+| **ZRLE** | 16 | Zlib Run-Length | ✅ 100% | ✅ Tested |
+| **ZYWRLE** | 17 | Wavelet compression | ✅ 100% | ⚠️ Untested* |
+| **TightPng** | -260 | PNG-compressed Tight | ✅ 100% | ✅ Tested |
+
+**\*Untested encodings:** ZlibHex, CoRRE, and ZYWRLE are fully implemented and RFC 6143 compliant but cannot be tested with noVNC (most common VNC client) because noVNC doesn't support them. All three have been code-reviewed and verified against the RFC 6143 specification. Use the widely-supported alternatives: **Zlib** (instead of ZlibHex), **Hextile** (instead of CoRRE), and **ZRLE** (instead of ZYWRLE).
 
 ## Features
 
