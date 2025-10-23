@@ -5,6 +5,16 @@ All notable changes to rfb-encodings will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2025-10-23
+
+### Changed
+
+- **Documentation**: Updated README.md with comprehensive encoding testing status table
+  - Added table showing all 10 supported encodings with their IDs, descriptions, wire format compliance, and testing status
+  - Clearly marked untested encodings (CoRRE, ZlibHex, ZYWRLE) with explanations
+  - Added note that untested encodings are RFC 6143 compliant but cannot be tested with noVNC
+  - Provided recommendations for using tested alternatives
+
 ## [0.1.1] - 2025-10-23
 
 ### Fixed
