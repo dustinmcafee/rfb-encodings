@@ -1,0 +1,9 @@
+rfb-encodings
+Copyright 2025 Dustin McAfee
+
+This product includes software developed by Dustin McAfee.
+
+This software implements the Remote Framebuffer (RFB) Protocol as specified in RFC 6143:
+https://www.rfc-editor.org/rfc/rfc6143.html
+
+The RFB Protocol was originally developed at AT&T Laboratories Cambridge.
